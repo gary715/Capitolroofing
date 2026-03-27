@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:ibroof.com)",
+      "WebSearch",
+      "WebFetch(domain:21735611.fs1.hubspotusercontent-na1.net)",
+      "WebFetch(domain:21735611.fs1.hubspotusercontent-na2.net)"
+    ]
+  }
+}
