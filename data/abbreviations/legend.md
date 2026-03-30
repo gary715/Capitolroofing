@@ -78,6 +78,25 @@ All abbreviations must be mapped to a standard product or task before generating
 
 ---
 
+## IB PVC Clad Metal (Sheet Metal Types)
+
+All metal listed below is **IB PVC clad metal** unless otherwise noted. PVC clad metal is factory-coated with IB PVC membrane so it heat-welds directly to the field membrane.
+
+| Abbreviation | Meaning | Notes |
+|---|---|---|
+| EDG | Edge metal / drip edge | Perimeter edge termination |
+| GRV | Gravel stop / raised edge | Used at low edges |
+| COP | Coping cap | Covers top of parapet wall |
+| REG | Reglet | Counterflashing at walls |
+| STEP | Step flashing | At vertical wall intersections |
+| VLY | Valley metal | At roof valleys / transitions |
+| BASE | Base flashing | At walls and curbs |
+| GUTTER | Gutter (PVC clad) | Integrated gutter |
+
+**Important:** When any IB PVC clad metal is listed on a field sheet, the cover strip rule applies automatically — see Derived Materials Rules.
+
+---
+
 ## Logistics & Site Notes
 
 | Abbreviation | Meaning |
@@ -135,4 +154,4 @@ All abbreviations must be mapped to a standard product or task before generating
 ---
 
 _This legend is maintained by Maxwell. Add new abbreviations as they are identified._
-_Last updated: 2026-03-30_
+_Last updated: 2026-03-30 — Added IB PVC clad metal types_

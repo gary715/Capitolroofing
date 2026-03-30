@@ -136,7 +136,32 @@ The following must be captured before the estimate is complete:
 
 ---
 
+## Derived Materials Rules
+
+These rules automatically add materials to the list based on other items already on the sheet.
+The system must apply these rules every time a material list is generated — they are not optional.
+
+### IB PVC Clad Metal → IB Cover Strip
+
+> **Rule:** For every 90 linear feet of IB PVC clad metal (any type), add 1 roll of IB Cover Strip.
+
+- IB Cover Strip is used to heat-weld the seam between the PVC membrane and the PVC clad metal
+- Applies to ALL IB metal types: edge metal, coping, reglet, base flashing, step flashing, gravel stop, valley metal
+- Total all metal LF first, then divide by 90 and round UP to the nearest whole number
+- **Example:** 220 LF of metal = 3 rolls of cover strip (220 ÷ 90 = 2.44 → round up to 3)
+- If metal LF is not recorded on the field sheet, flag as incomplete — do NOT estimate
+
+### More Derived Rules
+_Additional rules will be added here as identified by the owner._
+
+| Trigger Item | Derived Material | Calculation |
+|---|---|---|
+| IB PVC clad metal (any type) | IB Cover Strip | 1 roll per 90 LF (round up) |
+| [BOSS TO ADD] | [material] | [calculation] |
+
+---
+
 ## Notes
 - Prices marked **[BOSS TO FILL]** are locked until the owner inputs pricing
 - These rules are maintained by Maxwell and enforced by the estimating engine
-- Last updated: 2026-03-30
+- Last updated: 2026-03-30 — Added derived materials rules and IB cover strip rule

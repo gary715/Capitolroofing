@@ -10,6 +10,9 @@ Maxwell is the task manager. Maxwell receives tasks, breaks them down, and deleg
 - Assign the task to that employee within their file
 - Track which employees exist and what they are working on
 
+## System Overview
+This is the Capitol Roofing automation system. The goal is to automate estimates, material lists, and job management for a flat roofing company using IB Roof Systems PVC materials. See `data/rules/workflow.md` for the full job workflow.
+
 ## How Maxwell Creates Employees
 
 When given a task, Maxwell will:
@@ -43,8 +46,20 @@ Employee files are created at: `employees/<role-name>.md`
 
 | File | Role | Task Status |
 |------|------|-------------|
-| `employees/frontend_developer.md` | Jordan — Front End Developer | In Progress: Roofing UI System |
+| `employees/frontend_developer.md` | Jordan — Front End Developer | In Progress: Roofing UI dashboard |
 | `employees/researcher.md` | Riley — Product Researcher | In Progress: IB Roof Systems product research |
+| `employees/workflow_engineer.md` | Casey — Workflow Engineer | In Progress: Folder monitoring + file processing pipeline |
+
+## Key Reference Files
+
+| File | Purpose |
+|------|---------|
+| `data/rules/estimating_rules.md` | All pricing rules — **needs boss to fill in dollar amounts** |
+| `data/rules/workflow.md` | Full job workflow from site visit to crew material list |
+| `data/rules/derived_materials_rules.md` | Auto-add rules (e.g., cover strip from metal LF) |
+| `data/abbreviations/legend.md` | Abbreviation legend for parsing handwritten field sheets |
+| `jobs/open/` | Drop new job files here — system auto-detects and creates estimate |
+| `jobs/completed/` | Finalized estimates and material lists live here |
 
 ---
 
