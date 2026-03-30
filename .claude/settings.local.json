@@ -4,7 +4,13 @@
       "WebFetch(domain:ibroof.com)",
       "WebSearch",
       "WebFetch(domain:21735611.fs1.hubspotusercontent-na1.net)",
-      "WebFetch(domain:21735611.fs1.hubspotusercontent-na2.net)"
+      "WebFetch(domain:21735611.fs1.hubspotusercontent-na2.net)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(kill 34441)",
+      "Bash(git -C /Users/Gary/Desktop/workspace status)",
+      "Bash(git -C /Users/Gary/Desktop/workspace add .claude/launch.json .claude/settings.local.json)",
+      "Bash(git -C:*)",
+      "Bash(git -C /Users/Gary/Desktop/workspace push origin main)"
     ]
   }
 }
