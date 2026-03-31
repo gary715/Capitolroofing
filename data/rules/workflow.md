@@ -5,6 +5,21 @@ from initial site visit to material list delivery to the crew.
 
 ---
 
+## What Is a Walkthrough?
+
+A **walkthrough** is a site visit that takes place approximately 3–4 weeks before the job starts.
+The purpose is to take final measurements, photos, and notes so that the exact material list can be built.
+
+A walkthrough typically produces:
+1. **Handwritten notes** — abbreviations, quantities, linear feet of metal, penetration counts
+2. **A hand-drawn sketch** — roof sections with dimensions and area in squares, drain locations
+3. **A work order** (sometimes) — pre-filled document confirming job type, total squares, and labor
+4. Photos of the roof, penetrations, and problem areas
+
+All of these are uploaded together as the walkthrough package for a job.
+
+---
+
 ## Phase 1 — Estimating
 
 ### Step 1: Upload Field Notes to Open Folder
@@ -90,6 +105,25 @@ When parsing handwritten notes, the following trigger a **flag** (not an error):
 5. Missing required estimate fields → list exactly which fields are missing
 
 **Rule:** The system presents all flags to the owner before generating the final estimate or material list. The owner resolves each flag manually.
+
+---
+
+## Material List Format
+
+The material list is generated from the walkthrough notes and follows this structure:
+1. **Membrane** — type and squares
+2. **Insulation** — type, quantity, dimensions
+3. **Metal** — each type with LF
+4. **Derived materials** — auto-calculated (e.g., cover strip)
+5. **Pipe boots** — by size (A, B, C) and quantity
+6. **Penetrations & details** — corners, vents, pitch pockets, etc.
+7. **Fasteners & hardware** — screws, plates, barbed plates
+8. **Miscellaneous** — wood, unistrut, other
+
+The list is generated with all items. Items with zero quantity are filtered out before printing.
+Non-standard items (unusual sizes, special orders) are added as additional line items.
+
+The crew uses this list to pull material from the warehouse.
 
 ---
 

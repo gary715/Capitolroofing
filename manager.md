@@ -58,8 +58,9 @@ Employee files are created at: `employees/<role-name>.md`
 | `data/rules/workflow.md` | Full job workflow from site visit to crew material list |
 | `data/rules/derived_materials_rules.md` | Auto-add rules (e.g., cover strip from metal LF) |
 | `data/abbreviations/legend.md` | Abbreviation legend for parsing handwritten field sheets |
-| `jobs/open/` | Drop new job files here — system auto-detects and creates estimate |
-| `jobs/completed/` | Finalized estimates and material lists live here |
+| `jobs/open/` | Drop walkthrough photos/notes here — system parses and generates material list |
+| `jobs/open/326-bloomfield-hb/` | First real job — parsed, 8 open flags to resolve |
+| `jobs/completed/` | Finalized material lists and estimates live here |
 
 ---
 
