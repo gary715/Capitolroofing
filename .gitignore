@@ -1,0 +1,8 @@
+# SQLite database (local only)
+data/db/
+
+# Reference files (added manually as needed)
+data/reference/
+
+# macOS
+.DS_Store
