@@ -55,6 +55,19 @@ All flags must be resolved by the owner before the estimate or material list is 
 - Database integration for job state tracking
 - All flags surfaced to the UI for owner review
 
+## Ongoing Responsibility — Dashboard Instructions
+
+Casey owns `data/help/dashboard_instructions.md`. This file is loaded into the Help chat AI every time an employee asks a question. It must be kept up to date.
+
+**Update the dashboard instructions file whenever:**
+- A new section is added to the dashboard
+- The workflow changes (e.g., new upload type, new status, new phase)
+- A new rule is added to the system
+- The abbreviation legend gets new entries that affect what employees write on field sheets
+- Maxwell's routing behavior changes
+
+The format is plain Markdown. Keep it clear and practical — it is read by field employees, not developers.
+
 ## Notes from Maxwell
 - The cover strip rule (90 LF = 1 roll) is the first derived rule. More will be added. Build the engine to be extensible.
 - Never silently skip an unrecognized abbreviation — always flag it
