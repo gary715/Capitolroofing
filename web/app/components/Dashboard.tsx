@@ -192,7 +192,7 @@ function UploadZone({
     <div>
       <div
         className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-colors ${
-          dragging ? "border-orange-400 bg-orange-50" : "border-slate-300 hover:border-orange-300 hover:bg-slate-50"
+          dragging ? "border-[#2878C4] bg-[#e8f2fb]" : "border-slate-300 hover:border-[#2878C4]/50 hover:bg-slate-50"
         } ${processing ? "pointer-events-none opacity-60" : ""}`}
         onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
         onDragLeave={() => setDragging(false)}
@@ -202,7 +202,7 @@ function UploadZone({
         <input ref={inputRef} type="file" className="hidden" accept=".txt,.md,.pdf" onChange={handleChange} />
         {processing ? (
           <div className="flex flex-col items-center gap-2 text-slate-500">
-            <svg className="w-8 h-8 animate-spin text-orange-500" fill="none" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 animate-spin text-[#2878C4]" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
@@ -242,7 +242,7 @@ function MaxwellResultCard({ result, onDismiss }: { result: MaxwellResult; onDis
               {result.document_type?.replace(/_/g, " ")}
             </span>
             <span className="text-xs text-slate-300">→</span>
-            <span className="text-xs font-medium uppercase tracking-wide text-orange-500">
+            <span className="text-xs font-medium uppercase tracking-wide text-[#2878C4]">
               {result.routed_to}
             </span>
           </div>
@@ -362,7 +362,7 @@ function EstimatesSection() {
           { label: "Open", value: estimates.filter((e) => e.status === "open").length, color: "border-blue-400" },
           { label: "Won", value: won, color: "border-green-400" },
           { label: "Lost", value: estimates.filter((e) => e.status === "lost").length, color: "border-red-400" },
-          { label: "Conversion Rate", value: conversionRate !== null ? `${conversionRate}%` : "—", color: "border-orange-400" },
+          { label: "Conversion Rate", value: conversionRate !== null ? `${conversionRate}%` : "—", color: "border-[#2878C4]" },
         ].map((s) => (
           <div key={s.label} className={`bg-white rounded-xl p-4 border-l-4 ${s.color} shadow-sm`}>
             <div className="text-2xl font-bold text-slate-800">{s.value}</div>
@@ -535,7 +535,7 @@ function MaterialListsSection() {
                     </td>
                     <td className="px-4 py-3 text-xs text-slate-400">{new Date(ml.created_at).toLocaleDateString()}</td>
                     <td className="px-4 py-3">
-                      <button className="text-xs text-orange-500 hover:text-orange-600 font-medium">Print</button>
+                      <button className="text-xs text-[#2878C4] hover:text-[#1a5fa0] font-medium">Print</button>
                     </td>
                   </tr>
                 ))}
@@ -564,12 +564,12 @@ function DashboardHome({ onNavigate }: { onNavigate: (s: string) => void }) {
   const stats = [
     { label: "Open Estimates", value: estimates.filter((e) => e.status === "open").length, color: "border-blue-400" },
     { label: "Won / Contracts", value: won, color: "border-green-400" },
-    { label: "Conversion Rate", value: conversionRate, color: "border-orange-400" },
+    { label: "Conversion Rate", value: conversionRate, color: "border-[#2878C4]" },
     { label: "Material Lists", value: "—", color: "border-purple-400" },
   ];
 
   const QUICK_ACTIONS = [
-    { label: "New Estimate", section: "estimates", color: "bg-orange-500 hover:bg-orange-600" },
+    { label: "New Estimate", section: "estimates", color: "bg-[#2878C4] hover:bg-[#1a5fa0]" },
     { label: "Material List", section: "material-list", color: "bg-blue-600 hover:bg-blue-700" },
     { label: "Active Jobs", section: "jobs", color: "bg-green-600 hover:bg-green-700" },
   ];
@@ -619,7 +619,7 @@ function DashboardHome({ onNavigate }: { onNavigate: (s: string) => void }) {
             <div key={mod.name} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3">
               <span className={`mt-0.5 w-2.5 h-2.5 rounded-full shrink-0 ${
                 mod.status === "Active" ? "bg-green-400" :
-                mod.status === "Planned" ? "bg-slate-300" : "bg-orange-400"
+                mod.status === "Planned" ? "bg-slate-300" : "bg-[#2878C4]"
               }`} />
               <div>
                 <div className="font-medium text-slate-800 text-sm">{mod.name}</div>
@@ -638,7 +638,7 @@ function DashboardHome({ onNavigate }: { onNavigate: (s: string) => void }) {
 function TeamView({ manager, employees }: { manager: string; employees: Array<{ name: string; content: string }> }) {
   const [selected, setSelected] = useState<string | null>(null);
   const all = [
-    { name: "Maxwell", role: "Manager / AI Router", file: "manager.md", content: manager, color: "bg-orange-500" },
+    { name: "Maxwell", role: "Manager / AI Router", file: "manager.md", content: manager, color: "bg-[#2878C4]" },
     ...employees.map((emp) => ({
       name: emp.name.replace(/_/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()),
       role: emp.name.replace(/_/g, " "),
@@ -660,7 +660,7 @@ function TeamView({ manager, employees }: { manager: string; employees: Array<{ 
             key={member.name}
             onClick={() => setSelected(selected === member.name ? null : member.name)}
             className={`bg-white rounded-xl p-5 shadow-sm border text-left transition-all ${
-              selected === member.name ? "border-orange-400 ring-1 ring-orange-400" : "border-slate-100 hover:border-slate-300"
+              selected === member.name ? "border-[#2878C4] ring-1 ring-[#2878C4]" : "border-slate-100 hover:border-slate-300"
             }`}
           >
             <div className={`w-10 h-10 ${member.color} rounded-full flex items-center justify-center text-white font-bold text-lg mb-3`}>
@@ -762,7 +762,7 @@ function HelpChat() {
           <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             <div className={`max-w-[85%] rounded-xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
               msg.role === "user"
-                ? "bg-[#0f2d4a] text-white"
+                ? "bg-[#2878C4] text-white"
                 : "bg-slate-50 text-slate-800 border border-slate-200"
             }`}>
               {msg.content}
@@ -800,7 +800,7 @@ function HelpChat() {
         <button
           onClick={send}
           disabled={loading || !input.trim()}
-          className="bg-[#0f2d4a] hover:bg-[#1a4066] disabled:bg-slate-300 text-white px-5 py-3 rounded-xl text-sm font-medium transition-colors shrink-0"
+          className="bg-[#2878C4] hover:bg-[#1a5fa0] disabled:bg-slate-300 text-white px-5 py-3 rounded-xl text-sm font-medium transition-colors shrink-0"
         >
           Send
         </button>
@@ -826,7 +826,7 @@ function ComingSoon({ title, description }: { title: string; description: string
       </div>
       <h2 className="text-xl font-semibold text-slate-700">{title}</h2>
       <p className="text-slate-400 mt-2 max-w-sm text-sm">{description}</p>
-      <span className="mt-4 text-xs bg-orange-100 text-orange-600 px-3 py-1 rounded-full font-medium">Coming Soon</span>
+      <span className="mt-4 text-xs bg-[#2878C4]/10 text-[#1a5fa0] px-3 py-1 rounded-full font-medium">Coming Soon</span>
     </div>
   );
 }
@@ -840,9 +840,22 @@ export default function Dashboard({ manager, employees }: { manager: string; emp
     <div className="flex h-screen bg-slate-100 font-sans">
       {/* Sidebar */}
       <aside className="w-64 bg-[#0f2d4a] flex flex-col shrink-0">
-        <div className="px-6 py-5 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+        <div className="px-4 py-4 border-b border-white/10">
+          {/* Logo — drop logo.png into web/public/ to activate */}
+          <img
+            src="/logo.png"
+            alt="Capitol Roofing"
+            className="h-16 w-auto object-contain"
+            onError={(e) => {
+              const el = e.currentTarget;
+              el.style.display = "none";
+              const fallback = el.nextElementSibling as HTMLElement | null;
+              if (fallback) fallback.style.display = "flex";
+            }}
+          />
+          {/* Fallback shown until logo.png is added */}
+          <div className="items-center gap-2 hidden">
+            <div className="w-8 h-8 bg-[#2878C4] rounded flex items-center justify-center shrink-0">
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M3 12l9-9 9 9H3z" />
                 <path d="M5 10v9h14v-9" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -850,7 +863,7 @@ export default function Dashboard({ manager, employees }: { manager: string; emp
             </div>
             <div>
               <div className="text-white font-bold text-sm leading-tight">Capitol</div>
-              <div className="text-orange-400 text-xs font-medium">Roofing</div>
+              <div className="text-[#2878C4] text-xs font-medium">Roofing</div>
             </div>
           </div>
         </div>
@@ -863,7 +876,7 @@ export default function Dashboard({ manager, employees }: { manager: string; emp
                 key={item.id}
                 onClick={() => setActiveSection(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-left ${
-                  active ? "bg-orange-500 text-white" : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  active ? "bg-[#2878C4] text-white" : "text-slate-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Icon />
