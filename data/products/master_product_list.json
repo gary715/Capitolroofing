@@ -1,0 +1,213 @@
+{
+  "version": "1.0",
+  "description": "Master product catalog for Capitol Roofing material lists. Sourced from blank material list template. All quantities in the list default to 0 and are filtered before printing.",
+  "last_updated": "2026-03-31",
+  "categories": [
+    {
+      "id": "roof_insulation",
+      "name": "Roof Insulation",
+      "items": [
+        { "id": "iso_1_5", "name": "1.5\" Polyisocyanurate", "unit": "PCS", "abbrev": ["1.5 ISO", "ISO 1.5"] },
+        { "id": "iso_2", "name": "2\" Polyisocyanurate", "unit": "PCS", "abbrev": ["2 ISO", "ISO 2"] },
+        { "id": "iso_half_hd", "name": "1/2\" HD ISO", "unit": "PCS", "abbrev": ["1/2 ISO", "HD ISO", "half ISO"], "notes": "High-density, mechanically fastened to deck" },
+        { "id": "q_panel", "name": "Q Panel 1/2\"-2.5\" 4'x4'", "unit": "PCS", "abbrev": ["Q panel", "Q"], "notes": "Tapered ISO panel — 1/2\" to 2.5\" taper" },
+        { "id": "aa_panel", "name": "AA Panel 1/2\"-1.0\" 4'x4'", "unit": "PCS", "abbrev": ["AA panel", "AA"] },
+        { "id": "a_panel", "name": "A Panel 1.0\"-1.5\" 4'x4'", "unit": "PCS", "abbrev": ["A panel", "ISO A"], "notes": "NOT the same as A-cone pipe boot" },
+        { "id": "b_panel", "name": "B Panel 1.5\"-2.0\"", "unit": "PCS", "abbrev": ["B panel", "ISO B"] },
+        { "id": "c_panel", "name": "C Panel 2.0\"-2.5\"", "unit": "PCS", "abbrev": ["C panel", "ISO C"] },
+        { "id": "x_panel", "name": "X Panel 1/2\"-1.5\"", "unit": "PCS", "abbrev": ["X panel", "X", "ISO X", "X-cut"], "notes": "X-cut tapered panel — for crickets and slope transitions" },
+        { "id": "y_panel", "name": "Y Panel 1.5\"-2.5\"", "unit": "PCS", "abbrev": ["Y panel", "ISO Y"] },
+        { "id": "taper_12", "name": "12\" Taper Board", "unit": "PCS", "abbrev": ["12 taper", "12\" taper"] },
+        { "id": "taper_18", "name": "18\" Taper Board", "unit": "PCS", "abbrev": ["18 taper", "18\" taper", "16\" taper"], "notes": "FLAG: field notes sometimes say 16\" but spreadsheet uses 18\" — confirm with boss" },
+        { "id": "cant_strip", "name": "Cant Strip", "unit": "PCS", "abbrev": ["CNT", "cant"] }
+      ]
+    },
+    {
+      "id": "coverboard",
+      "name": "Roof Coverboard",
+      "items": [
+        { "id": "separator_sheet", "name": "Separator Sheet", "unit": "PCS", "abbrev": ["sep sheet", "separator"] }
+      ]
+    },
+    {
+      "id": "flashing_membrane",
+      "name": "Flashing Membrane",
+      "items": [
+        { "id": "detail_membrane", "name": "Detail Membrane", "unit": "ROLL", "abbrev": ["detail roll", "60 mil detail", "detail membrane"], "notes": "Used for flashing details — NOT the same as field membrane rolls. When field notes list '60 mil - 1 roll' on an 80 mil job, this is likely the detail membrane." },
+        { "id": "t_patch", "name": "T-Patch Per 50 Bag", "unit": "BAG", "abbrev": ["T-patch", "T patch"] },
+        { "id": "outside_corner", "name": "Outside Corner", "unit": "PCS", "abbrev": ["OC", "OS", "outside corner", "O/S corners"] },
+        { "id": "inside_corner", "name": "Inside Corner", "unit": "PCS", "abbrev": ["IC", "IS", "inside corner", "I/S corners"] },
+        { "id": "cover_strip", "name": "IB Cover Strip 90 LF", "unit": "ROLL", "abbrev": ["cover strip", "CS"], "notes": "1 roll = ~90 LF. DERIVED RULE: 1 roll per 90 LF of IB PVC clad metal (GS, DE, Term bar only — NOT separator or service metal). Round up." }
+      ]
+    },
+    {
+      "id": "adhesives",
+      "name": "Adhesives",
+      "items": [
+        { "id": "waterborne", "name": "IB Water Borne (5 sq/pail)", "unit": "PAIL", "abbrev": ["water borne", "WB adhesive"] },
+        { "id": "vertibond", "name": "IB Vertibond (3 sq/pail)", "unit": "PAIL", "abbrev": ["vertibond"] },
+        { "id": "polyset_spray", "name": "Polyset PVC Spray Adhesive (8 sq)", "unit": "PAIL", "abbrev": ["polyset", "spray adhesive"] },
+        { "id": "cr20", "name": "CR 20 HFO Insulation Adhesive (25 sq)", "unit": "PAIL", "abbrev": ["CR20", "insulation adhesive"] },
+        { "id": "qdek_2302", "name": "Qdek 2302 PVC Membrane Adhesive (8 sq)", "unit": "CANISTER", "abbrev": ["qdek membrane", "2302"] },
+        { "id": "qdek_3000", "name": "Qdek 3000 Polyurethane Adhesive ISO (15 sq)", "unit": "CANISTER", "abbrev": ["qdek iso", "3000"] }
+      ]
+    },
+    {
+      "id": "fasteners",
+      "name": "Fasteners & Plates",
+      "items": [
+        { "id": "f12_1625", "name": "#12 Fasteners 1-5/8\"", "unit": "PCS", "abbrev": ["#12 1-5/8", "1.625 screw"] },
+        { "id": "f12_225", "name": "#12 Fasteners 2-1/4\"", "unit": "PCS", "abbrev": ["#12 2-1/4"] },
+        { "id": "f12_3", "name": "#12 Fasteners 3\"", "unit": "PAIL", "abbrev": ["#12 3\"", "3 screw"] },
+        { "id": "f12_4", "name": "#12 Fasteners 4\"", "unit": "PCS", "abbrev": ["#12 4\"", "4\" screw", "screws 4\"", "Screws 4"] },
+        { "id": "f12_5", "name": "#12 Fasteners 5\"", "unit": "PCS", "abbrev": ["#12 5\""] },
+        { "id": "f12_6", "name": "#12 Fasteners 6\"", "unit": "PCS", "abbrev": ["#12 6\""] },
+        { "id": "f14_3", "name": "#14 Fasteners 3\"", "unit": "PCS", "abbrev": ["#14 3\""] },
+        { "id": "f14_4", "name": "#14 Fasteners 4\"", "unit": "PCS", "abbrev": ["#14 4\""] },
+        { "id": "f14_5", "name": "#14 Fasteners 5\" 500ct", "unit": "PCS", "abbrev": ["#14 5\""] },
+        { "id": "f14_6", "name": "#14 Fasteners 6\" 500ct", "unit": "PCS", "abbrev": ["#14 6\""] },
+        { "id": "insulation_plates", "name": "Insulation Plates", "unit": "PAIL", "abbrev": ["plates", "ins plates", "ISO plates"] },
+        { "id": "membrane_plates_2", "name": "Membrane Plates 2\"", "unit": "PAIL", "abbrev": ["membrane plates", "2\" plates"] },
+        { "id": "membrane_plates_238", "name": "Membrane Plates 2-3/8\"", "unit": "PAIL", "abbrev": ["2-3/8 plates", "barbed plates"], "notes": "May be what field notes call 'barbed plates' — confirm with boss" },
+        { "id": "anchors_15", "name": "Anchors 1.5\"", "unit": "PCS", "abbrev": ["anchors 1.5"] },
+        { "id": "anchors_3", "name": "Anchors 3\"", "unit": "PCS", "abbrev": ["anchors 3"] },
+        { "id": "washer_screws", "name": "Washer Screws", "unit": "PCS", "abbrev": ["washer screws"] }
+      ]
+    },
+    {
+      "id": "pipe_boots_vents",
+      "name": "Pipe Boots & Vents",
+      "items": [
+        { "id": "short_a_cone", "name": "Short A-Cone", "unit": "PCS", "abbrev": ["short A", "short A-cone"] },
+        { "id": "short_split_a", "name": "Short Split A-Cone", "unit": "PCS", "abbrev": ["split A", "split A-cone"] },
+        { "id": "a_cone", "name": "A-Cone", "unit": "PCS", "abbrev": ["A", "A cone", "A-cone", "pipe boot A"] },
+        { "id": "b_cone", "name": "B-Cone", "unit": "PCS", "abbrev": ["B", "B cone", "B-cone", "pipe boot B"] },
+        { "id": "c_cone", "name": "C-Cone", "unit": "PCS", "abbrev": ["C", "C cone", "C-cone", "pipe boot C"] },
+        { "id": "d_cone", "name": "D-Cone", "unit": "PCS", "abbrev": ["D", "D cone", "D-cone", "pipe boot D"] },
+        { "id": "e_cone", "name": "E-Cone", "unit": "PCS", "abbrev": ["E", "E cone", "E-cone", "pipe boot E"] },
+        { "id": "vent_5", "name": "IB Membrane Vent 5\"", "unit": "PCS", "abbrev": ["5\" vent", "IB vent 5"] },
+        { "id": "vent_10", "name": "IB 10\" Vent", "unit": "PCS", "abbrev": ["10\" vent", "10 vent"] },
+        { "id": "hose_clamp_lg", "name": "Hose Clamps 2\"-10\"", "unit": "PCS", "abbrev": ["hose clamp large"] },
+        { "id": "hose_clamp_sm", "name": "Hose Clamps 1.5\"-2.5\"", "unit": "PCS", "abbrev": ["hose clamp small"] },
+        { "id": "galv_pipe_4", "name": "Galv Pipe 4\" - 5'", "unit": "PCS", "abbrev": ["galv 4"] },
+        { "id": "galv_base_4", "name": "Galv Base Cone 4\"", "unit": "PCS", "abbrev": ["galv base 4"] },
+        { "id": "storm_collar_4", "name": "Storm Collar 4\"", "unit": "PCS", "abbrev": ["storm collar 4"] },
+        { "id": "high_wind_cap_4", "name": "High Wind Cap 4\"", "unit": "PCS", "abbrev": ["high wind 4", "HW cap 4"] },
+        { "id": "high_wind_cap_6", "name": "High Wind Cap 6\"", "unit": "PCS", "abbrev": ["high wind 6", "HW cap 6", "6 high wind"] },
+        { "id": "galv_pipe_5", "name": "Galv Pipe 5\" - 5'", "unit": "PCS", "abbrev": ["galv 5"] },
+        { "id": "galv_base_5", "name": "Galv Base Cone 5\"", "unit": "PCS", "abbrev": ["galv base 5"] },
+        { "id": "galv_pipe_6", "name": "Galv Pipe 6\" - 5'", "unit": "PCS", "abbrev": ["galv 6"] },
+        { "id": "galv_base_6", "name": "Galv Base Cone 6\"", "unit": "PCS", "abbrev": ["galv base 6"] },
+        { "id": "storm_collar_6", "name": "Storm Collar 6\"", "unit": "PCS", "abbrev": ["storm collar 6"] },
+        { "id": "turbine_vent", "name": "Turbine Vent", "unit": "PCS", "abbrev": ["turbine"] }
+      ]
+    },
+    {
+      "id": "metal",
+      "name": "Metal",
+      "notes": "All metal below is IB PVC clad unless gauge (.032, .024) is specified. Cover strip rule applies to GS, DE, and Term Metal only.",
+      "items": [
+        { "id": "pitch_pocket_filler", "name": "Pitch Pocket Filler Per Bag", "unit": "BAG", "abbrev": ["PP filler", "filler", "pitch pocket filler"] },
+        { "id": "pitch_pocket", "name": "Pitch Pockets", "unit": "LF", "abbrev": ["PP", "pitch pocket", "PP metal"] },
+        { "id": "coping_lf", "name": "Coping Per LF", "unit": "LF", "abbrev": ["coping", "COP"] },
+        { "id": "counter_flash", "name": "Counter Flashing Per LF", "unit": "LF", "abbrev": ["counter flash", "REG", "reglet"] },
+        { "id": "pvc_flat_8", "name": "PVC Coated 8\" Flat Per LF", "unit": "LF", "abbrev": ["8\" flat", "flat metal 8"] },
+        { "id": "gs3", "name": "GS3 Gravel Stop", "unit": "LF", "abbrev": ["GS3", "gravel stop 3"] },
+        { "id": "gs4", "name": "GS4 Gravel Stop", "unit": "LF", "abbrev": ["GS4", "gravel stop 4"] },
+        { "id": "gs4_5", "name": "GS4.5 Gravel Stop", "unit": "LF", "abbrev": ["GS4.5", "gravel stop 4.5"] },
+        { "id": "gs5", "name": "GS5 Gravel Stop", "unit": "LF", "abbrev": ["GS5", "gravel stop 5"], "notes": "Not in blank template but appears in field notes for 326 Bloomfield — confirm if GS5 is stocked or special order" },
+        { "id": "gs6", "name": "GS6 Gravel Stop", "unit": "LF", "abbrev": ["GS6", "gravel stop 6"] },
+        { "id": "de4", "name": "DE4 Drip Edge", "unit": "LF", "abbrev": ["DE4", "drip edge 4"] },
+        { "id": "de4x4", "name": "DE 4\"x4\" IB", "unit": "LF", "abbrev": ["DE 4x4", ".032 DE 4x4", "DE 4x4 kick", "DE 4x4 plus kick"] },
+        { "id": "de3", "name": "DE3 Drip Edge", "unit": "LF", "abbrev": ["DE3", "drip edge 3"] },
+        { "id": "de4_f3r", "name": "DE 4\" Face 3 Roof", "unit": "LF", "abbrev": ["DE 4 F3R", "DE 4 face 3"] },
+        { "id": "de3x3", "name": "DE 3x3 No Kick", "unit": "LF", "abbrev": ["DE 3x3"] },
+        { "id": "de5_f3r", "name": "DE 5\" F 3R", "unit": "LF", "abbrev": ["DE 5 F3R", "DE 5 face 3"] },
+        { "id": "chimney_metal", "name": "Chimney Metal", "unit": "LF", "abbrev": ["chimney metal"] },
+        { "id": "service_metal", "name": "Service Metal", "unit": "LF", "abbrev": ["service metal", "SM", "svc metal"], "notes": "QUESTION: Confirm what 'service metal' is used for vs separator metal. Does cover strip apply?" },
+        { "id": "coping_16", "name": "Coping 16\"", "unit": "PC", "abbrev": ["coping 16", "16\" coping", ".032 cap 5.5"] },
+        { "id": "coping_24", "name": "Coping 24\"", "unit": "PC", "abbrev": ["coping 24", "24\" coping"] },
+        { "id": "chimney_3x3", "name": "Chimney Metal 3x3 Flat", "unit": "PC", "abbrev": ["chimney 3x3"] },
+        { "id": "equipment_rail", "name": "Equipment Rail Metal", "unit": "PC", "abbrev": ["equipment rail", "rail metal"] },
+        { "id": "sep_metal_3x3", "name": "Separator Metal 3x3", "unit": "LF", "abbrev": ["sep 3x3", "Sep 3x3", "separator 3x3", "sep metal 3"] },
+        { "id": "sep_metal_4x4", "name": "Separator Metal 4x4", "unit": "LF", "abbrev": ["sep 4x4", "Sep 4x4", "separator 4x4", "sep metal 4"] },
+        { "id": "term_metal", "name": "Term Metal", "unit": "LF", "abbrev": ["term", "term bar", "term metal", "TMB", "termination bar"] },
+        { "id": "lead_30x30", "name": "30\"x30\" Lead", "unit": "PC", "abbrev": ["lead", "30x30 lead"] },
+        { "id": "misc_metal", "name": "Misc Metal", "unit": "PC", "abbrev": ["misc metal", "misc"] }
+      ]
+    },
+    {
+      "id": "drains_scuppers",
+      "name": "Drains & Scuppers",
+      "items": [
+        { "id": "drain_3_pvc", "name": "3\" PVC Commercial Drain", "unit": "PCS", "abbrev": ["3\" drain", "3 commercial", "3 PVC drain"] },
+        { "id": "drain_4_pvc", "name": "4\" PVC Commercial Drain", "unit": "PCS", "abbrev": ["4\" drain", "4 commercial", "4 PVC drain"] },
+        { "id": "drain_3_retrofit", "name": "3\" Retrofit Drain", "unit": "PCS", "abbrev": ["3 retrofit"] },
+        { "id": "drain_4_retrofit", "name": "4\" Retrofit Drain", "unit": "PCS", "abbrev": ["4 retrofit"] },
+        { "id": "liner_2", "name": "2\" Drain Liner", "unit": "PCS", "abbrev": ["2 liner", "drain liner 2"] },
+        { "id": "liner_3", "name": "3\" Drain Liner", "unit": "PCS", "abbrev": ["3 liner", "drain liner 3"] },
+        { "id": "liner_4", "name": "4\" Drain Liner", "unit": "PCS", "abbrev": ["4 liner", "drain liner 4"] },
+        { "id": "basket_2", "name": "2\" Stainless Basket", "unit": "PCS", "abbrev": ["basket 2", "2 basket"] },
+        { "id": "basket_3", "name": "3\" Stainless Basket", "unit": "PCS", "abbrev": ["basket 3"] },
+        { "id": "basket_4", "name": "4\" Stainless Basket", "unit": "PCS", "abbrev": ["basket 4"] },
+        { "id": "scupper", "name": "Scupper", "unit": "PCS", "abbrev": ["scupper", "SCU"] }
+      ]
+    },
+    {
+      "id": "gutters_leaders",
+      "name": "Gutters & Leaders",
+      "items": [
+        { "id": "gutter_5", "name": "Gutter 5\"", "unit": "LF", "abbrev": ["gutter 5", "5\" gutter"] },
+        { "id": "gutter_6", "name": "Gutter 6\"", "unit": "LF", "abbrev": ["gutter 6", "6\" gutter"] },
+        { "id": "leader_3x4", "name": "3x4 Leader Per 10 ft", "unit": "PCS", "abbrev": ["3x4 leader"] },
+        { "id": "leader_3_round", "name": "3\" Round Leader", "unit": "PCS", "abbrev": ["3 round"] },
+        { "id": "leader_4_round", "name": "4\" Round Leader", "unit": "PCS", "abbrev": ["4 round"] }
+      ]
+    },
+    {
+      "id": "wood",
+      "name": "Wood",
+      "items": [
+        { "id": "wood_2x4", "name": "2\"x4\" Per LF", "unit": "LF", "abbrev": ["2x4"] },
+        { "id": "wood_2x6", "name": "2\"x6\" Per LF", "unit": "LF", "abbrev": ["2x6"] },
+        { "id": "wood_2x8", "name": "2\"x8\" Per LF", "unit": "LF", "abbrev": ["2x8"] },
+        { "id": "wood_2x10", "name": "2\"x10\" Per LF", "unit": "LF", "abbrev": ["2x10"] },
+        { "id": "cdx_half", "name": "1/2\" CDX Per Sheet", "unit": "SHEET", "abbrev": ["1/2 CDX", "CDX half"] },
+        { "id": "cdx_5_8", "name": "5/8\" CDX Per Sheet", "unit": "SHEET", "abbrev": ["5/8 CDX", "CDX 5/8"] }
+      ]
+    },
+    {
+      "id": "caulking",
+      "name": "Caulking & Sealants",
+      "items": [
+        { "id": "pu_caulk", "name": "Polyurethane Caulk", "unit": "PCS", "abbrev": ["PU caulk", "polyurethane"] },
+        { "id": "backer_rod", "name": "Backer Rod", "unit": "PCS", "abbrev": ["backer rod"] },
+        { "id": "watercutoff", "name": "Watercutoff", "unit": "PCS", "abbrev": ["watercutoff"] },
+        { "id": "karnaflex_white", "name": "Karnaflex White", "unit": "PCS", "abbrev": ["karnaflex white"] },
+        { "id": "karnaflex_black", "name": "Karnaflex Black", "unit": "PCS", "abbrev": ["karnaflex black"] }
+      ]
+    },
+    {
+      "id": "misc",
+      "name": "Misc",
+      "items": [
+        { "id": "skylight", "name": "Skylight", "unit": "UNIT", "abbrev": ["skylight", "SKY"], "notes": "Record model number (e.g. FCM 2222, FCM 3046, FCM 2230)" },
+        { "id": "bilco_hatch", "name": "Roof Hatch 30x36 Bilco", "unit": "MISC", "abbrev": ["bilco", "bilco hatch", "roof hatch"] },
+        { "id": "rags_rollers", "name": "Rags, Rollers, Cleaners etc.", "unit": "MISC", "abbrev": ["rags", "cleaners"] },
+        { "id": "blocks_boom", "name": "Blocks for Boom", "unit": "MISC", "abbrev": ["blocks", "boom blocks", "blocks for boom"], "notes": "Protective pads placed under boom truck stabilizer feet" },
+        { "id": "misc_general", "name": "Misc", "unit": "MISC", "abbrev": ["misc"] }
+      ]
+    },
+    {
+      "id": "parking",
+      "name": "Parking",
+      "items": [
+        { "id": "cones_signs", "name": "Cones / Signs", "unit": "MISC", "abbrev": ["cones", "signs", "parking cones"] }
+      ]
+    }
+  ],
+  "membrane_options": {
+    "pvc_ib": ["50 mil", "60 mil", "80 mil"],
+    "notes": "Membrane type and mil is recorded at the bottom of the material list. 60 mil is also used as detail membrane roll."
+  }
+}

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NAV_ITEMS = [
   { id: "dashboard", label: "Dashboard", icon: DashboardIcon },
+  { id: "ai-assistant", label: "AI Assistant", icon: AIIcon },
   { id: "estimates", label: "Estimates", icon: EstimatesIcon },
   { id: "material-list", label: "Material Lists", icon: MaterialIcon },
   { id: "upload", label: "Upload Field Sheet", icon: UploadIcon },
@@ -13,6 +14,13 @@ const NAV_ITEMS = [
   { id: "settings", label: "Settings", icon: SettingsIcon },
 ];
 
+function AIIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+    </svg>
+  );
+}
 function DashboardIcon() {
   return (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,13 +87,15 @@ const STAT_CARDS = [
 ];
 
 const QUICK_ACTIONS = [
-  { label: "New Estimate", section: "estimates", color: "bg-orange-500 hover:bg-orange-600" },
-  { label: "Create Material List", section: "material-list", color: "bg-blue-600 hover:bg-blue-700" },
-  { label: "Upload Field Sheet", section: "upload", color: "bg-green-600 hover:bg-green-700" },
+  { label: "AI Assistant", section: "ai-assistant", color: "bg-orange-500 hover:bg-orange-600" },
+  { label: "New Estimate", section: "estimates", color: "bg-blue-600 hover:bg-blue-700" },
+  { label: "Create Material List", section: "material-list", color: "bg-green-600 hover:bg-green-700" },
+  { label: "Upload Field Sheet", section: "upload", color: "bg-slate-600 hover:bg-slate-700" },
 ];
 
 export default function Dashboard({ manager, employees }: any) {
   const [activeSection, setActiveSection] = useState("dashboard");
+  const [chatHistory, setChatHistory] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
 
   return (
     <div className="flex h-screen bg-slate-100 font-sans">
@@ -155,6 +165,9 @@ export default function Dashboard({ manager, employees }: any) {
           {activeSection === "dashboard" && (
             <DashboardHome onNavigate={setActiveSection} />
           )}
+          {activeSection === "ai-assistant" && (
+            <AIAssistant history={chatHistory} onHistoryChange={setChatHistory} />
+          )}
           {activeSection === "team" && (
             <TeamView manager={manager} employees={employees} />
           )}
@@ -211,15 +224,16 @@ function DashboardHome({ onNavigate }: { onNavigate: (s: string) => void }) {
         <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">System Modules</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
+            { name: "AI Assistant (Claude)", status: "Active", note: "Parse field notes → material list via Claude Opus" },
             { name: "Estimating Tool", status: "In Development", note: "Per-square pricing + logistics factors" },
             { name: "Material List Creator", status: "In Development", note: "Handwritten sheet → parsed list" },
-            { name: "IB Products Database", status: "In Development", note: "Riley researching IBroof.com" },
-            { name: "Abbreviation Legend", status: "Pending Setup", note: "Needs boss input to configure" },
+            { name: "IB Products Database", status: "In Development", note: "148-item product catalog loaded" },
+            { name: "Abbreviation Legend", status: "Active", note: "A–E cone boots, ISO panels, metal types" },
             { name: "Upload & OCR", status: "Planned", note: "Photo upload + handwriting recognition" },
-            { name: "Rules Engine", status: "Planned", note: "Catch missing items, enforce combos" },
           ].map((mod) => (
             <div key={mod.name} className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-start gap-3">
               <span className={`mt-0.5 w-2.5 h-2.5 rounded-full shrink-0 ${
+                mod.status === "Active" ? "bg-green-400" :
                 mod.status === "In Development" ? "bg-orange-400" :
                 mod.status === "Pending Setup" ? "bg-yellow-400" : "bg-slate-300"
               }`} />
@@ -278,6 +292,146 @@ function TeamView({ manager, employees }: any) {
             {active.content}
           </pre>
         </div>
+      )}
+    </div>
+  );
+}
+
+function AIAssistant({
+  history,
+  onHistoryChange,
+}: {
+  history: Array<{ role: "user" | "assistant"; content: string }>;
+  onHistoryChange: (h: Array<{ role: "user" | "assistant"; content: string }>) => void;
+}) {
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [history, loading]);
+
+  async function send() {
+    const msg = input.trim();
+    if (!msg || loading) return;
+    setInput("");
+    setError(null);
+
+    const newHistory = [...history, { role: "user" as const, content: msg }];
+    onHistoryChange(newHistory);
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/claude", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, history }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Request failed");
+      onHistoryChange([...newHistory, { role: "assistant" as const, content: data.reply }]);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Something went wrong");
+      onHistoryChange(history); // revert
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    }
+  }
+
+  return (
+    <div className="flex flex-col h-full max-h-[calc(100vh-10rem)]">
+      <div className="mb-4">
+        <h2 className="text-xl font-bold text-slate-800">AI Assistant</h2>
+        <p className="text-slate-500 text-sm mt-1">
+          Paste field notes, describe a walkthrough, or ask questions. Claude will parse the job and generate a material list using your rules.
+        </p>
+      </div>
+
+      {/* Chat area */}
+      <div className="flex-1 overflow-y-auto bg-white rounded-xl border border-slate-200 p-4 space-y-4 mb-4 min-h-0">
+        {history.length === 0 && (
+          <div className="text-center py-16 text-slate-400">
+            <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+              <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <p className="text-sm font-medium text-slate-500">Start by describing a job or pasting field notes</p>
+            <p className="text-xs text-slate-400 mt-1">Claude will use your rules and abbreviation legend to build the material list</p>
+          </div>
+        )}
+
+        {history.map((msg, i) => (
+          <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+            <div
+              className={`max-w-[85%] rounded-xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
+                msg.role === "user"
+                  ? "bg-orange-500 text-white"
+                  : "bg-slate-50 text-slate-800 border border-slate-200"
+              }`}
+            >
+              {msg.content}
+            </div>
+          </div>
+        ))}
+
+        {loading && (
+          <div className="flex justify-start">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-500 flex items-center gap-2">
+              <span className="flex gap-1">
+                <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+              </span>
+              Generating...
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
+            {error}
+          </div>
+        )}
+        <div ref={bottomRef} />
+      </div>
+
+      {/* Input area */}
+      <div className="flex gap-3 items-end">
+        <textarea
+          className="flex-1 border border-slate-200 rounded-xl px-4 py-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+          rows={3}
+          placeholder="Paste field notes or describe the job... (Enter to send, Shift+Enter for new line)"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKey}
+          disabled={loading}
+        />
+        <button
+          onClick={send}
+          disabled={loading || !input.trim()}
+          className="bg-orange-500 hover:bg-orange-600 disabled:bg-slate-300 text-white px-5 py-3 rounded-xl text-sm font-medium transition-colors shrink-0"
+        >
+          Send
+        </button>
+      </div>
+
+      {history.length > 0 && (
+        <button
+          onClick={() => onHistoryChange([])}
+          className="text-xs text-slate-400 hover:text-slate-600 mt-2 text-right"
+        >
+          Clear conversation
+        </button>
       )}
     </div>
   );
