@@ -840,32 +840,12 @@ export default function Dashboard({ manager, employees }: { manager: string; emp
     <div className="flex h-screen bg-slate-100 font-sans">
       {/* Sidebar */}
       <aside className="w-64 bg-[#0f2d4a] flex flex-col shrink-0">
-        <div className="px-4 py-4 border-b border-white/10">
-          {/* Logo — drop logo.png into web/public/ to activate */}
+        <div className="px-3 py-3 border-b border-white/10 flex items-center justify-center">
           <img
             src="/logo.png"
             alt="Capitol Roofing"
-            className="h-16 w-auto object-contain"
-            onError={(e) => {
-              const el = e.currentTarget;
-              el.style.display = "none";
-              const fallback = el.nextElementSibling as HTMLElement | null;
-              if (fallback) fallback.style.display = "flex";
-            }}
+            className="w-full max-w-[180px] h-auto object-contain"
           />
-          {/* Fallback shown until logo.png is added */}
-          <div className="items-center gap-2 hidden">
-            <div className="w-8 h-8 bg-[#2878C4] rounded flex items-center justify-center shrink-0">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3 12l9-9 9 9H3z" />
-                <path d="M5 10v9h14v-9" fill="none" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-            </div>
-            <div>
-              <div className="text-white font-bold text-sm leading-tight">Capitol</div>
-              <div className="text-[#2878C4] text-xs font-medium">Roofing</div>
-            </div>
-          </div>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           {NAV_ITEMS.map((item) => {
