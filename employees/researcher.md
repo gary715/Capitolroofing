@@ -43,8 +43,40 @@ Save all research to:
 ## Deliverable
 A complete product reference document and JSON data file covering the full IB Roof Systems product line relevant to flat roofing installs and recovers.
 
+## Priority Research Tasks (from Q&A Session 1)
+
+### IB Pipe Boot Sizes
+Find the exact pipe diameter ranges for IB Roof Systems pipe boots:
+- Size A = ? (estimated 1"–2")
+- Size B = ? (estimated 2"–4")
+- Size C = ? (estimated 4"+)
+- Check ibroof.com product catalog for specifications
+- Also look for D-Cone and E-Cone if they exist
+
+### IB Outside Corners (OS) and Inside Corners (IS)
+Find and document:
+- Product specifications for prefabricated OS and IS corners
+- Available sizes and materials
+- Application method / installation guide
+- ibroof.com should have detailed product pages for these
+
+### Pitch Pocket Reference Diagram
+Find a clear diagram showing:
+- What a pitch pocket looks like installed
+- The L-bend construction
+- Standard 3"x3" dimensions
+- How filler is applied
+- Save diagram to data/reference/ if possible
+
+### GAF TPO Research (for Skyview project)
+- EverGuard TPO membrane specifications
+- GAF tapered ISO panel thickness charts
+- Adhesive coverage rates for fully adhered TPO
+- Retrofit drain specifications
+
 ## Notes from Maxwell
 - Accuracy is critical — this data will feed directly into the estimating tool
 - Flag any products that have multiple variants (thickness, width, etc.) as these will need separate line items in estimates
 - Note any minimum order quantities or coverage rates (squares per roll, etc.)
 - If warranty tiers are tied to specific product combinations, document those clearly
+- All research findings should also be entered as training rules via the Training Module

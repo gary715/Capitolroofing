@@ -5,6 +5,7 @@ import { useSession, signOut } from "next-auth/react";
 import ProjectHelper from "./ProjectHelper";
 import EstimateQueue from "./EstimateQueue";
 import EstimateTrainer from "./EstimateTrainer";
+import RulesDocs from "./RulesDocs";
 
 // ─── Nav ────────────────────────────────────────────────────────────────────
 
@@ -927,7 +928,7 @@ export default function Dashboard({ manager, employees }: { manager: string; emp
           {activeSection === "help" && <HelpChat />}
           {activeSection === "project-helper" && <ProjectHelper />}
           {activeSection === "products" && <ComingSoon title="Products" description="IB Roof Systems PVC product catalog — 148 items loaded from master template." />}
-          {activeSection === "rules" && <ComingSoon title="Rules & Docs" description="Estimating rules, derived materials rules, abbreviation legend, and workflow docs." />}
+          {activeSection === "rules" && <RulesDocs />}
           {activeSection === "settings" && <ComingSoon title="Settings" description="Company info, pricing configuration, and system preferences." />}
         </main>
       </div>
