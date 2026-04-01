@@ -165,7 +165,28 @@ export function getDb() {
       notes TEXT,
       created_at TEXT DEFAULT (datetime('now'))
     );
+
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT UNIQUE NOT NULL,
+      password_hash TEXT NOT NULL,
+      name TEXT NOT NULL,
+      role TEXT NOT NULL DEFAULT 'viewer'
+        CHECK(role IN ('admin','estimator','foreman','viewer')),
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    );
   `);
+
+  // Seed default admin if no users exist
+  const userCount = (_db!.prepare("SELECT COUNT(*) as c FROM users").get() as { c: number }).c;
+  if (userCount === 0) {
+    const bcrypt = require("bcryptjs");
+    const hash = bcrypt.hashSync("admin123", 10);
+    _db!.prepare(
+      "INSERT INTO users (email, password_hash, name, role) VALUES (?, ?, ?, ?)"
+    ).run("admin@capitolroofing.com", hash, "Admin", "admin");
+  }
 
   return _db!;
 }

@@ -2,6 +2,8 @@ import { getDb } from "@/lib/db";
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { NextRequest } from "next/server";
+import { requireRole } from "@/lib/authorize";
+import { validateUpload } from "@/lib/upload-validate";
 
 const QUEUE_DIR = join(process.cwd(), "..", "data", "estimate-queue");
 
@@ -9,6 +11,9 @@ export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { error } = await requireRole("viewer");
+  if (error) return error;
+
   const { id } = await params;
   const db = getDb();
   const files = db.prepare("SELECT * FROM estimate_files WHERE estimate_queue_id = ? ORDER BY created_at DESC").all(id);
@@ -19,12 +24,17 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { error } = await requireRole("estimator");
+  if (error) return error;
+
   const { id } = await params;
   const formData = await request.formData();
   const file = formData.get("file") as File | null;
   const category = (formData.get("category") as string) || "other";
 
   if (!file) return Response.json({ error: "No file" }, { status: 400 });
+  const check = validateUpload(file);
+  if (!check.valid) return Response.json({ error: check.error }, { status: 400 });
 
   const dir = join(QUEUE_DIR, id);
   mkdirSync(dir, { recursive: true });
@@ -63,6 +73,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { error } = await requireRole("estimator");
+  if (error) return error;
+
   const { id } = await params;
   const { fileId } = await request.json();
   const db = getDb();

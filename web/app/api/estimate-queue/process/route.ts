@@ -9,6 +9,8 @@ import { readFileSync, readdirSync, mkdirSync } from "fs";
 import { join } from "path";
 import { NextRequest } from "next/server";
 import { getDb } from "@/lib/db";
+import { requireRole } from "@/lib/authorize";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const REF_DIR = join(process.cwd(), "..", "data", "project-helper", "references");
@@ -160,6 +162,16 @@ Be thorough with materials. Include membrane, insulation, adhesives, fasteners, 
 }
 
 export async function POST(request: NextRequest) {
+  const { error, session } = await requireRole("estimator");
+  if (error) return error;
+  const limit = checkRateLimit(session!.user.id);
+  if (!limit.allowed) {
+    return Response.json(
+      { error: "Rate limit exceeded. Try again shortly." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(limit.retryAfterMs / 1000)) } }
+    );
+  }
+
   try {
     const body = await request.json();
     const { ids, force } = body as { ids?: number[]; force?: boolean };

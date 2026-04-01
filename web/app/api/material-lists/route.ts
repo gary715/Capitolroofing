@@ -1,6 +1,10 @@
 import { getDb } from "@/lib/db";
+import { requireRole } from "@/lib/authorize";
 
 export async function GET() {
+  const { error } = await requireRole("viewer");
+  if (error) return error;
+
   const db = getDb();
   const lists = db.prepare(`
     SELECT ml.id, ml.job_address, ml.status, ml.flags, ml.created_at,

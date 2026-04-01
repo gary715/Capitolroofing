@@ -2,6 +2,7 @@ import { getDb } from "@/lib/db";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { NextRequest } from "next/server";
+import { requireRole } from "@/lib/authorize";
 
 const JOBS_DIR = join(process.cwd(), "..", "jobs", "active");
 
@@ -31,6 +32,9 @@ function seedProjectIfNeeded(db: ReturnType<typeof getDb>, projectId: string) {
 }
 
 export async function GET() {
+  const { error } = await requireRole("viewer");
+  if (error) return error;
+
   const db = getDb();
 
   // Auto-discover active job folders and seed them
@@ -60,6 +64,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const { error } = await requireRole("foreman");
+  if (error) return error;
+
   const body = await request.json();
   const db = getDb();
   const result = db.prepare(`

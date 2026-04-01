@@ -1,5 +1,6 @@
 import { getDb } from "@/lib/db";
 import { NextRequest } from "next/server";
+import { requireRole } from "@/lib/authorize";
 
 const REQUIRED_FIELDS = ["name", "address", "roofing_type", "insulation_type"];
 
@@ -16,6 +17,9 @@ function computeReadiness(row: Record<string, unknown>, fileCount: number) {
 }
 
 export async function GET() {
+  const { error } = await requireRole("viewer");
+  if (error) return error;
+
   const db = getDb();
   const items = db.prepare(`
     SELECT q.*,
@@ -29,6 +33,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const { error } = await requireRole("estimator");
+  if (error) return error;
+
   const body = await request.json();
   const db = getDb();
 
@@ -51,6 +58,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
+  const { error } = await requireRole("estimator");
+  if (error) return error;
+
   const body = await request.json();
   const db = getDb();
 
@@ -75,6 +85,9 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const { error } = await requireRole("estimator");
+  if (error) return error;
+
   const { id } = await request.json();
   const db = getDb();
   db.prepare("DELETE FROM estimate_files WHERE estimate_queue_id = ?").run(id);

@@ -1,7 +1,11 @@
 import { getDb } from "@/lib/db";
 import { NextRequest } from "next/server";
+import { requireRole } from "@/lib/authorize";
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { error } = await requireRole("viewer");
+  if (error) return error;
+
   const { id } = await params;
   const db = getDb();
   const entries = db.prepare(`
@@ -11,6 +15,9 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
 }
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { error } = await requireRole("foreman");
+  if (error) return error;
+
   const { id } = await params;
   const body = await request.json();
   const db = getDb();

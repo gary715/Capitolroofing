@@ -2,6 +2,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { NextRequest } from "next/server";
+import { requireRole } from "@/lib/authorize";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -71,6 +73,16 @@ Always respond with a structured material list in this order:
 `;
 
 export async function POST(request: NextRequest) {
+  const { error, session } = await requireRole("estimator");
+  if (error) return error;
+  const limit = checkRateLimit(session!.user.id);
+  if (!limit.allowed) {
+    return Response.json(
+      { error: "Rate limit exceeded. Try again shortly." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(limit.retryAfterMs / 1000)) } }
+    );
+  }
+
   try {
     const body = await request.json();
     const { message, history = [] } = body as {

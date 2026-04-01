@@ -4,5 +4,9 @@ data/db/
 # Reference files (added manually as needed)
 data/reference/
 
+# Environment secrets
+.env.local
+.env*.local
+
 # macOS
 .DS_Store
