@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import ProjectHelper from "./ProjectHelper";
+import EstimateQueue from "./EstimateQueue";
 
 // ─── Nav ────────────────────────────────────────────────────────────────────
 
@@ -315,9 +316,25 @@ function MaxwellResultCard({ result, onDismiss }: { result: MaxwellResult; onDis
   );
 }
 
-// ─── Estimates section ────────────────────────────────────────────────────────
+// ─── Estimates section (with queue + tracking tabs) ──────────────────────────
 
 function EstimatesSection() {
+  const [tab, setTab] = useState<"queue" | "tracking">("queue");
+  return (
+    <div className="space-y-5">
+      <div className="flex gap-1 bg-slate-100 rounded-lg p-1 w-fit">
+        {([["queue", "Estimate Queue"], ["tracking", "Tracking"]] as const).map(([id, label]) => (
+          <button key={id} onClick={() => setTab(id)}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${tab === id ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
+          >{label}</button>
+        ))}
+      </div>
+      {tab === "queue" ? <EstimateQueue /> : <EstimateTracking />}
+    </div>
+  );
+}
+
+function EstimateTracking() {
   const [estimates, setEstimates] = useState<Estimate[]>([]);
   const [result, setResult] = useState<MaxwellResult | null>(null);
   const [loading, setLoading] = useState(true);

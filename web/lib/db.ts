@@ -125,6 +125,34 @@ export function getDb() {
       created_at TEXT DEFAULT (datetime('now'))
     );
 
+    CREATE TABLE IF NOT EXISTS estimate_queue (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      address TEXT,
+      roofing_type TEXT,
+      insulation_type TEXT,
+      total_squares REAL,
+      stories INTEGER,
+      notes TEXT,
+      status TEXT DEFAULT 'draft'
+        CHECK(status IN ('draft','ready','processing','complete','error')),
+      missing_fields TEXT,
+      result TEXT,
+      questions TEXT,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS estimate_files (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      estimate_queue_id INTEGER NOT NULL REFERENCES estimate_queue(id) ON DELETE CASCADE,
+      file_name TEXT NOT NULL,
+      file_category TEXT DEFAULT 'other'
+        CHECK(file_category IN ('satellite','spec','plan','photo','walkthrough','other')),
+      file_path TEXT NOT NULL,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
     CREATE TABLE IF NOT EXISTS deliveries (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       project_id TEXT REFERENCES active_projects(id),
