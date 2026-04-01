@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import ActiveJobs from "./ActiveJobs";
+import ProjectHelper from "./ProjectHelper";
 
 // ─── Nav ────────────────────────────────────────────────────────────────────
 
@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { id: "dashboard", label: "Dashboard", icon: DashboardIcon },
   { id: "estimates", label: "Estimates", icon: EstimatesIcon },
   { id: "material-list", label: "Material Lists", icon: MaterialIcon },
-  { id: "jobs", label: "Active Jobs", icon: JobsIcon },
+  { id: "project-helper", label: "Project Helper", icon: JobsIcon },
   { id: "products", label: "Products", icon: ProductsIcon },
   { id: "rules", label: "Rules & Docs", icon: RulesIcon },
   { id: "team", label: "Team", icon: TeamIcon },
@@ -572,7 +572,7 @@ function DashboardHome({ onNavigate }: { onNavigate: (s: string) => void }) {
   const QUICK_ACTIONS = [
     { label: "New Estimate", section: "estimates", color: "bg-[#2878C4] hover:bg-[#1a5fa0]" },
     { label: "Material List", section: "material-list", color: "bg-blue-600 hover:bg-blue-700" },
-    { label: "Active Jobs", section: "jobs", color: "bg-green-600 hover:bg-green-700" },
+    { label: "Project Helper", section: "project-helper", color: "bg-green-600 hover:bg-green-700" },
   ];
 
   return (
@@ -888,7 +888,7 @@ export default function Dashboard({ manager, employees }: { manager: string; emp
           {activeSection === "material-list" && <MaterialListsSection />}
           {activeSection === "team" && <TeamView manager={manager} employees={employees} />}
           {activeSection === "help" && <HelpChat />}
-          {activeSection === "jobs" && <ActiveJobs />}
+          {activeSection === "project-helper" && <ProjectHelper />}
           {activeSection === "products" && <ComingSoon title="Products" description="IB Roof Systems PVC product catalog — 148 items loaded from master template." />}
           {activeSection === "rules" && <ComingSoon title="Rules & Docs" description="Estimating rules, derived materials rules, abbreviation legend, and workflow docs." />}
           {activeSection === "settings" && <ComingSoon title="Settings" description="Company info, pricing configuration, and system preferences." />}
