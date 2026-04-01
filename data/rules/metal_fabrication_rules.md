@@ -36,9 +36,13 @@
 - Made from an **L-bend** of sheet metal
 - Installed around **odd-shaped roof penetrations** (wire bundles, AC copper lines, conduit clusters)
 - Forms a square enclosure around the penetration
-- Filled with pitch pocket filler (measured in **tubes**)
+- Each pitch pocket must be filled with **pourable urethane filler** ("pitch pocket filler")
+- **1 bag fills approximately 6 standard-size (3"x3") pitch pockets**
+- **4 bags per case** when ordering
+- Estimating formula: count pitch pockets ÷ 6 = bags needed (round up), then round up to nearest case of 4 if ordering full cases
 - Standard length: 10' (same as all prefab metal)
 - Custom heights noted when different (e.g., "5" High" means 5" tall instead of standard 3")
+- Larger or taller pitch pockets use more filler — adjust count accordingly
 
 ## Strip Sizes
 - Future addition: prefabricated metal strip sizes for each profile will be added for estimating purposes

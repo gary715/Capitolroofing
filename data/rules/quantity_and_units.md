@@ -29,7 +29,7 @@
 
 ## Filler and Sealant
 
-- Pitch pocket filler: measured in **tubes** (e.g., "2" = 2 tubes)
+- Pitch pocket filler: pourable urethane, measured in **bags** (1 bag fills ~6 standard pitch pockets, 4 bags per case)
 
 ## Items NOT Tracked
 
