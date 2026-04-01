@@ -1,0 +1,78 @@
+{
+  "id": "skyview-carriage-city",
+  "name": "Skyview at Carriage City Condo",
+  "address": "1 Carriage City Plaza, Rahway, NJ 07065",
+  "contact": "Mike Rawitz (mike.rawitz@cp-management.com)",
+  "spec_date": "2025-04-11",
+  "status": "active",
+
+  "roof": {
+    "total_squares": 234.2,
+    "total_sqft": 23420,
+    "type": "Tear-off and replace",
+    "sections": ["Main Roof", "Bulkhead Roofs"],
+    "deck": "Concrete"
+  },
+
+  "system": {
+    "manufacturer": "GAF",
+    "membrane": {
+      "type": "TPO",
+      "attachment": "Fully adhered",
+      "product": "EverGuard TPO",
+      "spec_section": "07 54 23"
+    },
+    "vapor_barrier": true,
+    "cover_board": {
+      "type": "SECUROCK or approved equal",
+      "thickness": "0.5 inch HD",
+      "attachment": "Adhered"
+    },
+    "tapered_insulation": {
+      "product": "EnergyGuard ISO by GAF (or approved equal)",
+      "slope": "1/8 inch per foot",
+      "min_thickness_at_low_point": "1.5 inches",
+      "r_value_target": 30,
+      "panel_size": "4x4",
+      "attachment": "Adhered (solvent-free insulation adhesive at 1.5 gal/100 SF)",
+      "spec_section": "07 22 00"
+    },
+    "drains": {
+      "type": "4-inch retrofit drains",
+      "count": 24,
+      "thru_wall_bulkhead": 2,
+      "spec_section": "15 00 00"
+    }
+  },
+
+  "key_quantities": {
+    "total_squares": 234.2,
+    "retrofit_drains": 24,
+    "thru_wall_drains": 2,
+    "guard_rail_lf": 70,
+    "eifs_repair_sf": 300,
+    "concrete_curb_lf": 160,
+    "concrete_slab_repair_sf": 100
+  },
+
+  "dimensions_from_satellite": {
+    "bottom_width": "126.2ft + 104.1ft + 13ft",
+    "left_height": "29.1ft + 30.9ft",
+    "upper_notch": "32.8ft x (6.7ft + 32.1ft + 16.4ft)",
+    "right_wing_height": "89.4ft",
+    "right_wing_width": "21.9ft + 24.6ft + 23.8ft",
+    "right_side_height": "74.8ft",
+    "note": "Some field dimensions differ from spec drawings — use satellite measurements as field reference"
+  },
+
+  "tracking": {
+    "notion_used": true,
+    "tracks": ["daily_progress", "material_deliveries", "material_ordering", "dumpster_dropoff", "dumpster_pickup", "dumpster_count"]
+  },
+
+  "files": {
+    "spec_pdf": "SPEC 2025-04-11 Skyview at Carriage City Condominium - Roofing Replacement Project.pdf",
+    "roof_plan": "roof_plan.png",
+    "satellite": "satellite.png"
+  }
+}

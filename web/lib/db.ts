@@ -95,6 +95,48 @@ export function getDb() {
       unit TEXT,
       notes TEXT
     );
+
+    CREATE TABLE IF NOT EXISTS active_projects (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      address TEXT,
+      status TEXT DEFAULT 'active'
+        CHECK(status IN ('active','completed','on_hold')),
+      total_squares REAL,
+      system_type TEXT,
+      manufacturer TEXT,
+      folder_path TEXT,
+      start_date TEXT,
+      notes TEXT,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS daily_log (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      project_id TEXT REFERENCES active_projects(id),
+      log_date TEXT NOT NULL,
+      crew_count INTEGER,
+      area_worked TEXT,
+      squares_completed REAL,
+      work_description TEXT,
+      weather TEXT,
+      issues TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS deliveries (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      project_id TEXT REFERENCES active_projects(id),
+      delivery_date TEXT NOT NULL,
+      type TEXT NOT NULL CHECK(type IN ('material','dumpster_drop','dumpster_pickup')),
+      description TEXT,
+      supplier TEXT,
+      quantity TEXT,
+      dumpster_number INTEGER,
+      notes TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
   `);
 
   return _db!;
