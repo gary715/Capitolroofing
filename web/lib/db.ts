@@ -166,6 +166,45 @@ export function getDb() {
       created_at TEXT DEFAULT (datetime('now'))
     );
 
+    CREATE TABLE IF NOT EXISTS training_rules (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      category TEXT NOT NULL,
+      subcategory TEXT,
+      rule_text TEXT NOT NULL,
+      source_document TEXT,
+      source_session_id INTEGER,
+      confidence TEXT DEFAULT 'learned'
+        CHECK(confidence IN ('assumed','learned','verified','locked')),
+      times_used INTEGER DEFAULT 0,
+      last_used TEXT,
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS training_sessions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      topic TEXT,
+      status TEXT DEFAULT 'active'
+        CHECK(status IN ('active','completed','archived')),
+      messages TEXT DEFAULT '[]',
+      rules_created INTEGER DEFAULT 0,
+      documents_processed TEXT DEFAULT '[]',
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS model_usage (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      task_type TEXT NOT NULL,
+      model_used TEXT NOT NULL,
+      input_tokens INTEGER,
+      output_tokens INTEGER,
+      cost_estimate REAL,
+      duration_ms INTEGER,
+      quality_note TEXT,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
+
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT UNIQUE NOT NULL,

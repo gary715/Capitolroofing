@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import ProjectHelper from "./ProjectHelper";
 import EstimateQueue from "./EstimateQueue";
+import EstimateTrainer from "./EstimateTrainer";
 
 // ─── Nav ────────────────────────────────────────────────────────────────────
 
@@ -320,17 +321,21 @@ function MaxwellResultCard({ result, onDismiss }: { result: MaxwellResult; onDis
 // ─── Estimates section (with queue + tracking tabs) ──────────────────────────
 
 function EstimatesSection() {
-  const [tab, setTab] = useState<"queue" | "tracking">("queue");
+  const [tab, setTab] = useState<"queue" | "tracking" | "training">("queue");
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 h-full flex flex-col">
       <div className="flex gap-1 bg-slate-100 rounded-lg p-1 w-fit">
-        {([["queue", "Estimate Queue"], ["tracking", "Tracking"]] as const).map(([id, label]) => (
+        {([["queue", "Estimate Queue"], ["tracking", "Tracking"], ["training", "Training"]] as const).map(([id, label]) => (
           <button key={id} onClick={() => setTab(id)}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${tab === id ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
           >{label}</button>
         ))}
       </div>
-      {tab === "queue" ? <EstimateQueue /> : <EstimateTracking />}
+      <div className="flex-1 min-h-0">
+        {tab === "queue" && <EstimateQueue />}
+        {tab === "tracking" && <EstimateTracking />}
+        {tab === "training" && <EstimateTrainer />}
+      </div>
     </div>
   );
 }
