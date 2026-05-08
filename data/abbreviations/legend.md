@@ -91,19 +91,21 @@ All abbreviations must be mapped to a standard product or task before generating
 
 ---
 
-## Pipe Boots / Pipe Cones (IB System)
+## Pipe Boots (IB System)
 
-IB pipe boots are cone-shaped (referred to as "cones" on the spreadsheet). Sizes A through E cover different pipe diameter ranges.
+IB pipe boots cover different pipe diameter ranges. Sizes A through E. The updated material list uses "pipe boot" terminology (not "cone").
 
 | Abbreviation | Spreadsheet Name | Pipe Size Range |
 |---|---|---|
-| A / A-cone | A-Cone Pipe Boot | [BOSS TO CONFIRM — small pipes] |
-| B / B-cone | B-Cone Pipe Boot | [BOSS TO CONFIRM] |
-| C / C-cone | C-Cone Pipe Boot | [BOSS TO CONFIRM] |
-| D / D-cone | D-Cone Pipe Boot | [BOSS TO CONFIRM — large pipes] |
-| E / E-cone | E-Cone Pipe Boot | [BOSS TO CONFIRM — extra large] |
+| A | A pipe boot | Use IB researcher to confirm — see ibroof.com |
+| Short A | Short A pipe boot | Shorter version of A pipe boot |
+| Short Split A | Short Split A pipe boot | Split version for existing pipes (no need to disconnect) |
+| B | B pipe boot | Use IB researcher to confirm |
+| C | C pipe boot | Use IB researcher to confirm |
+| D | D pipe boot | Use IB researcher to confirm |
+| E | E pipe boot | Use IB researcher to confirm |
 
-**Note:** Field notes may use just the letter (A, B, C, D, E). The spreadsheet and material list use the full "X-Cone" format.
+**Note:** Field notes may use just the letter (A, B, C, D, E). Old documents may say "cone" — treat as same item.
 
 ---
 
@@ -254,11 +256,11 @@ PVC clad metal heat-welds directly to the IB field membrane.
 8. Multiple roof sections in a sketch are additive — sum all sections for total squares
 9. If total squares in sketch does not match total squares in work order, flag the discrepancy
 10. **Cover strip applies ONLY to perimeter IB PVC clad metal (GS and DE).** Separator metal and service metal do NOT trigger the cover strip rule.
-11. Pipe boots are called "cones" on the spreadsheet (A-Cone, B-Cone, C-Cone, D-Cone, E-Cone). Field notes may use just the letter.
+11. Pipe boots were previously called "cones" on older spreadsheets. The updated material list (v2, May 2026) uses "pipe boot" (A pipe boot, B pipe boot, etc.). Field notes may use just the letter or "cone" — treat as same item.
 12. "Term bar" and "Term Metal" are the same product — use "Term Metal" as the standard name.
 13. Skylight model numbers follow the FCM format — FCM XXYY where XX = width and YY = height in inches (e.g. FCM 2222 = 22"x22").
 
 ---
 
 _This legend is maintained by Maxwell. Add new abbreviations as they are identified._
-_Last updated: 2026-03-31 — Added A-E cone pipe boots, ISO panel names (Q/AA/A/B/C/X/Y), separator and service metal, FCM skylights, drain types, cover strip scope clarification, term metal standardization_
+_Last updated: 2026-05-08 — Updated pipe boot terminology (was "cone"), added EPDM/Shingle/PVC Pipe categories, Metal IB vs Metal 0.032 split, IB/alum Tube & flange drains, Sikaflex varieties, 1" ISO, 1/2" Fiber board_
